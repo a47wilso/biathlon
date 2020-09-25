@@ -268,7 +268,7 @@ game.onUpdateInterval(30000, function () {
     obstacle3.setPosition(randint(0, 150), 150)
 })
 game.onUpdateInterval(500, function () {
-    info.changeScoreBy(5)
+    info.changeScoreBy(1)
 })
 game.onUpdateInterval(3000, function () {
     obstacle2 = sprites.create(img`
