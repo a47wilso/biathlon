@@ -33,6 +33,11 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     if (otherSprite == target2) {
         target2.destroy(effects.disintegrate, 200)
         info.changeScoreBy(10)
+    } else if (otherSprite == obstacle3) {
+        obstacle3.destroy(effects.disintegrate, 200)
+        info.changeLifeBy(1)
+    } else {
+        target2.destroy(effects.disintegrate, 200)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -54,9 +59,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
     scene.cameraShake(4, 200)
 })
-let obstacle3: Sprite = null
 let obstacle2: Sprite = null
 let obstacle: Sprite = null
+let obstacle3: Sprite = null
 let target2: Sprite = null
 let arrow: Sprite = null
 let mySprite: Sprite = null
