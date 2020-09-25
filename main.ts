@@ -155,6 +155,7 @@ let mySprite = sprites.create(img`
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite, 200, 200)
 info.setLife(5)
+info.setScore(0)
 game.onUpdateInterval(5000, function () {
     obstacle2 = sprites.create(img`
         . . f f f f f f f f f f f f . . 
@@ -222,4 +223,7 @@ game.onUpdateInterval(750, function () {
         `, SpriteKind.Tree)
     obstacle.setVelocity(0, -42)
     obstacle.setPosition(randint(0, 150), 150)
+})
+game.onUpdateInterval(500, function () {
+    info.changeScoreBy(5)
 })
