@@ -4,9 +4,11 @@ namespace SpriteKind {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Snow, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 200)
+    scene.cameraShake(4, 200)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Tree, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 200)
+    scene.cameraShake(4, 200)
 })
 let obstacle: Sprite = null
 let obstacle2: Sprite = null
@@ -152,6 +154,7 @@ let mySprite = sprites.create(img`
     `, SpriteKind.Player)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite, 200, 200)
+info.setLife(5)
 game.onUpdateInterval(5000, function () {
     obstacle2 = sprites.create(img`
         . . f f f f f f f f f f f f . . 
