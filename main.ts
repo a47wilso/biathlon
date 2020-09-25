@@ -3,10 +3,10 @@ namespace SpriteKind {
     export const Tree = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Snow, function (sprite, otherSprite) {
-    obstacle2.destroy(effects.disintegrate, 200)
+    otherSprite.destroy(effects.disintegrate, 200)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Tree, function (sprite, otherSprite) {
-    obstacle.destroy(effects.disintegrate, 200)
+    otherSprite.destroy(effects.disintegrate, 200)
 })
 let obstacle: Sprite = null
 let obstacle2: Sprite = null
