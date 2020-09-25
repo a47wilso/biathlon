@@ -37,7 +37,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
         obstacle3.destroy(effects.disintegrate, 200)
         info.changeLifeBy(1)
     } else {
-        target2.destroy(effects.disintegrate, 200)
+    	
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
