@@ -145,14 +145,14 @@ let mySprite = sprites.create(img`
     . . . f . . . d d . . . f . . . 
     . . . . f f 8 8 8 8 f f . . . . 
     . . . . . 8 8 8 8 8 8 . . . . . 
-    . . . . a . 8 8 8 8 . a . . . . 
-    . . . . a . 8 8 8 8 . a . . . . 
-    . . . . a a f 8 8 f a a . . . . 
-    . . . . . a f f f f a . . . . . 
-    . . . . . a f . . f a . . . . . 
-    . . . . . . a . . a . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
+    . . . . . . 8 8 8 8 . . . . . . 
+    . . . . . . 8 8 8 8 . . . . . . 
+    . . . . . . f 8 8 f . . . . . . 
+    . . . . . . f f f f . . . . . . 
+    . . . . . a f a a f a . . . . . 
+    . . . . a a a . . a a a . . . . 
+    . . . a a a . . . . a a a . . . 
+    . . . a a . . . . . . a a . . . 
     `, SpriteKind.Player)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite, 200, 200)
