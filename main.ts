@@ -2,6 +2,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     obstacle.destroy(effects.disintegrate, 200)
 })
 let obstacle: Sprite = null
+let obstacle2: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -144,7 +145,29 @@ let mySprite = sprites.create(img`
     `, SpriteKind.Player)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite, 200, 200)
-game.onUpdateInterval(500, function () {
+game.onUpdateInterval(5000, function () {
+    obstacle2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . f f 1 1 f f . . . . . 
+        . . . f f f 1 1 1 1 f f f . . . 
+        . . . f 1 1 1 1 1 1 1 1 f . . . 
+        . . . f 1 1 1 1 1 1 1 1 f . . . 
+        . . . f 1 1 1 1 1 1 1 1 f . . . 
+        . . . f 1 1 1 1 1 1 1 1 f . . . 
+        . . . f 1 1 1 1 1 1 1 1 f . . . 
+        . . . f 1 1 1 1 1 1 1 1 f . . . 
+        . . . f f f f f f f f f f . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    obstacle2.setVelocity(0, -42)
+    obstacle2.setPosition(randint(0, 150), 150)
+})
+game.onUpdateInterval(2000, function () {
     obstacle = sprites.create(img`
         ................86..................
         ...........6688867886...............
@@ -188,6 +211,6 @@ game.onUpdateInterval(500, function () {
         ...............fceeec...............
         ...............ffceec...............
         `, SpriteKind.Enemy)
-    obstacle.setVelocity(0, -100)
-    obstacle.setPosition(randint(0, 120), 150)
+    obstacle.setVelocity(0, -42)
+    obstacle.setPosition(randint(0, 150), 150)
 })
