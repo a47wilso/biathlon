@@ -3,24 +3,24 @@ namespace SpriteKind {
     export const Tree = SpriteKind.create()
     export const goose = SpriteKind.create()
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.goose, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.disintegrate, 200)
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (otherSprite == obstacle) {
+        otherSprite.destroy(effects.disintegrate, 200)
+        info.changeLifeBy(-1)
+    } else if (otherSprite == obstacle2) {
+        otherSprite.destroy(effects.disintegrate, 200)
+        info.changeLifeBy(-1)
+    } else if (otherSprite == obstacle3) {
+        otherSprite.destroy(effects.disintegrate, 200)
+        info.changeLifeBy(-1)
+    } else {
+    	
+    }
     scene.cameraShake(4, 200)
-    info.changeLifeBy(-5)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Snow, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.disintegrate, 200)
-    scene.cameraShake(4, 200)
-    info.changeLifeBy(-1)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Tree, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.disintegrate, 200)
-    scene.cameraShake(4, 200)
-    info.changeLifeBy(-1)
 })
 let obstacle3: Sprite = null
-let obstacle: Sprite = null
 let obstacle2: Sprite = null
+let obstacle: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -165,28 +165,6 @@ mySprite.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite, 200, 200)
 info.setLife(5)
 info.setScore(0)
-game.onUpdateInterval(5000, function () {
-    obstacle2 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . 8 8 8 8 8 8 . . . . . 
-        . . . . 8 9 9 9 9 9 9 8 . . . . 
-        . . . 8 9 9 1 1 1 1 9 9 8 . . . 
-        . . . 8 9 1 1 1 1 1 1 9 8 . . . 
-        . . 8 9 9 1 1 1 9 1 1 9 9 8 . . 
-        . . 8 9 1 1 1 1 1 9 1 1 9 8 . . 
-        . . 8 9 1 1 9 1 1 1 1 1 9 8 . . 
-        . 8 9 9 1 9 1 1 9 1 1 1 9 9 8 . 
-        8 9 9 1 1 1 1 1 1 1 9 1 1 9 9 8 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Snow)
-    obstacle2.setVelocity(0, -42)
-    obstacle2.setPosition(randint(0, 150), 150)
-})
 game.onUpdateInterval(750, function () {
     obstacle = sprites.create(img`
         ........................
@@ -229,9 +207,31 @@ game.onUpdateInterval(750, function () {
         .........feeeef.........
         ........feeefeef........
         ........fefeffef........
-        `, SpriteKind.Tree)
+        `, SpriteKind.Enemy)
     obstacle.setVelocity(0, -42)
     obstacle.setPosition(randint(0, 150), 150)
+})
+game.onUpdateInterval(1000, function () {
+    obstacle2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 8 8 8 8 8 8 . . . . . 
+        . . . . 8 9 9 9 9 9 9 8 . . . . 
+        . . . 8 9 9 1 1 1 1 9 9 8 . . . 
+        . . . 8 9 1 1 1 1 1 1 9 8 . . . 
+        . . 8 9 9 1 1 1 9 1 1 9 9 8 . . 
+        . . 8 9 1 1 1 1 1 9 1 1 9 8 . . 
+        . . 8 9 1 1 9 1 1 1 1 1 9 8 . . 
+        . 8 9 9 1 9 1 1 9 1 1 1 9 9 8 . 
+        8 9 9 1 1 1 1 1 1 1 9 1 1 9 9 8 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    obstacle2.setVelocity(0, -42)
+    obstacle2.setPosition(randint(0, 150), 150)
 })
 game.onUpdateInterval(30000, function () {
     obstacle3 = sprites.create(img`
@@ -251,7 +251,7 @@ game.onUpdateInterval(30000, function () {
         . . . . . 4 4 . . . . . . . . . 
         . . . . . 4 4 . . . . . . . . . 
         . . . . . 4 4 4 4 4 . . . . . . 
-        `, SpriteKind.goose)
+        `, SpriteKind.Enemy)
     obstacle3.setVelocity(0, -42)
     obstacle3.setPosition(randint(0, 150), 150)
 })
