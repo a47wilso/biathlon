@@ -3,6 +3,9 @@ namespace SpriteKind {
     export const Tree = SpriteKind.create()
     export const goose = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (otherSprite == obstacle) {
         otherSprite.destroy(effects.disintegrate, 200)
