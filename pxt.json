@@ -2,8 +2,7 @@
     "name": "Biathlon",
     "description": "",
     "dependencies": {
-        "device": "*",
-        "Biathlon": "github:a47wilso/biathlon#b4bb502e9e6c05b0f0df01bb8f07a7077727f11f"
+        "device": "*"
     },
     "files": [
         "main.blocks",
