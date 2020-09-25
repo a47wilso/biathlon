@@ -5,10 +5,12 @@ namespace SpriteKind {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Snow, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 200)
     scene.cameraShake(4, 200)
+    info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Tree, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 200)
     scene.cameraShake(4, 200)
+    info.changeLifeBy(-1)
 })
 let obstacle: Sprite = null
 let obstacle2: Sprite = null
