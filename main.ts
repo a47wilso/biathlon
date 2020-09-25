@@ -1,7 +1,13 @@
 namespace SpriteKind {
     export const Snow = SpriteKind.create()
     export const Tree = SpriteKind.create()
+    export const goose = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.goose, function (sprite, otherSprite) {
+    otherSprite.destroy(effects.disintegrate, 200)
+    scene.cameraShake(4, 200)
+    info.changeLifeBy(-5)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Snow, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 200)
     scene.cameraShake(4, 200)
@@ -12,6 +18,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Tree, function (sprite, otherSpr
     scene.cameraShake(4, 200)
     info.changeLifeBy(-1)
 })
+let obstacle3: Sprite = null
 let obstacle: Sprite = null
 let obstacle2: Sprite = null
 scene.setBackgroundImage(img`
@@ -225,6 +232,28 @@ game.onUpdateInterval(750, function () {
         `, SpriteKind.Tree)
     obstacle.setVelocity(0, -42)
     obstacle.setPosition(randint(0, 150), 150)
+})
+game.onUpdateInterval(30000, function () {
+    obstacle3 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . f f f f f f . . 
+        . . . . . . . . f 1 1 1 1 f . . 
+        . . . . . . . . f 1 1 f 1 f . . 
+        . . . . . . . . f 1 1 4 4 4 4 . 
+        . . . . . . . . f 1 f 4 4 4 4 . 
+        . . . . . . . . f 1 f . . . . . 
+        . . . . . . . . f 1 f . . . . . 
+        . . . . f f f f f 1 f . . . . . 
+        . f f f f 1 1 1 1 1 f . . . . . 
+        . f 1 1 1 1 1 1 1 1 f . . . . . 
+        . f f 1 1 1 1 1 1 1 f . . . . . 
+        . . f f f f f f f f f . . . . . 
+        . . . . . 4 4 . . . . . . . . . 
+        . . . . . 4 4 . . . . . . . . . 
+        . . . . . 4 4 4 4 4 . . . . . . 
+        `, SpriteKind.goose)
+    obstacle3.setVelocity(0, -42)
+    obstacle3.setPosition(randint(0, 150), 150)
 })
 game.onUpdateInterval(500, function () {
     info.changeScoreBy(5)
