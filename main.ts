@@ -1,8 +1,8 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     obstacle.destroy(effects.disintegrate, 200)
 })
-let obstacle: Sprite = null
 let obstacle2: Sprite = null
+let obstacle: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -164,7 +164,7 @@ game.onUpdateInterval(5000, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    obstacle2.setVelocity(0, -42)
+    obstacle2.setVelocity(0, -80)
     obstacle2.setPosition(randint(0, 150), 150)
 })
 game.onUpdateInterval(2000, function () {
