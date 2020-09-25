@@ -27,6 +27,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    arrow.setVelocity(0, -42)
+    sprite.destroy(effects.disintegrate, 200)
+    if (otherSprite == target2) {
+        target2.destroy(effects.disintegrate, 200)
+        info.changeScoreBy(10)
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (otherSprite == obstacle) {
         otherSprite.destroy(effects.disintegrate, 200)
@@ -37,16 +45,19 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     } else if (otherSprite == obstacle3) {
         otherSprite.destroy(effects.disintegrate, 200)
         info.changeLifeBy(-5)
+    } else if (otherSprite == target2) {
+        otherSprite.destroy(effects.disintegrate, 200)
+        info.changeLifeBy(-1)
     } else {
         otherSprite.destroy(effects.disintegrate, 200)
         info.changeLifeBy(-1)
     }
     scene.cameraShake(4, 200)
 })
-let target: Sprite = null
 let obstacle3: Sprite = null
 let obstacle2: Sprite = null
 let obstacle: Sprite = null
+let target2: Sprite = null
 let arrow: Sprite = null
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
@@ -201,6 +212,28 @@ mySprite.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite, 100, 100)
 info.setLife(5)
 info.setScore(0)
+game.onUpdateInterval(5000, function () {
+    target2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . f 2 2 2 2 f . . . . . 
+        . . . . f 2 2 4 4 2 2 f . . . . 
+        . . . . f 2 4 5 5 4 2 f . . . . 
+        . . . . f 2 4 5 5 4 2 f . . . . 
+        . . . . f 2 2 4 4 2 2 f . . . . 
+        . . . . . f 2 2 2 2 f . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    target2.setVelocity(0, -42)
+    target2.setPosition(randint(0, 150), 150)
+})
 game.onUpdateInterval(750, function () {
     obstacle = sprites.create(img`
         ........................
@@ -271,28 +304,6 @@ game.onUpdateInterval(30000, function () {
 })
 game.onUpdateInterval(500, function () {
     info.changeScoreBy(1)
-})
-game.onUpdateInterval(3000, function () {
-    target = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f . . . . . . 
-        . . . . . f 2 2 2 2 f . . . . . 
-        . . . . f 2 2 4 4 2 2 f . . . . 
-        . . . . f 2 4 5 5 4 2 f . . . . 
-        . . . . f 2 4 5 5 4 2 f . . . . 
-        . . . . f 2 2 4 4 2 2 f . . . . 
-        . . . . . f 2 2 2 2 f . . . . . 
-        . . . . . . f f f f . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.target)
-    target.setVelocity(0, -42)
-    target.setPosition(randint(0, 150), 150)
 })
 game.onUpdateInterval(3000, function () {
     obstacle2 = sprites.create(img`
