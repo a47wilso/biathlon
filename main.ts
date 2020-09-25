@@ -209,28 +209,6 @@ game.onUpdateInterval(750, function () {
     obstacle.setVelocity(0, -42)
     obstacle.setPosition(randint(0, 150), 150)
 })
-game.onUpdateInterval(1000, function () {
-    obstacle2 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . 8 8 8 8 8 8 . . . . . 
-        . . . . 8 9 9 9 9 9 9 8 . . . . 
-        . . . 8 9 9 1 1 1 1 9 9 8 . . . 
-        . . . 8 9 1 1 1 1 1 1 9 8 . . . 
-        . . 8 9 9 1 1 1 9 1 1 9 9 8 . . 
-        . . 8 9 1 1 1 1 1 9 1 1 9 8 . . 
-        . . 8 9 1 1 9 1 1 1 1 1 9 8 . . 
-        . 8 9 9 1 9 1 1 9 1 1 1 9 9 8 . 
-        8 9 9 1 1 1 1 1 1 1 9 1 1 9 9 8 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
-    obstacle2.setVelocity(0, -42)
-    obstacle2.setPosition(randint(0, 150), 150)
-})
 game.onUpdateInterval(30000, function () {
     obstacle3 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -255,4 +233,26 @@ game.onUpdateInterval(30000, function () {
 })
 game.onUpdateInterval(500, function () {
     info.changeScoreBy(5)
+})
+game.onUpdateInterval(3000, function () {
+    obstacle2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 8 8 8 8 8 8 . . . . . 
+        . . . . 8 9 9 9 9 9 9 8 . . . . 
+        . . . 8 9 9 1 1 1 1 9 9 8 . . . 
+        . . . 8 9 1 1 1 1 1 1 9 8 . . . 
+        . . 8 9 9 1 1 1 9 1 1 9 9 8 . . 
+        . . 8 9 1 1 1 1 1 9 1 1 9 8 . . 
+        . . 8 9 1 1 9 1 1 1 1 1 9 8 . . 
+        . 8 9 9 1 9 1 1 9 1 1 1 9 9 8 . 
+        8 9 9 1 1 1 1 1 1 1 9 1 1 9 9 8 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    obstacle2.setVelocity(0, -42)
+    obstacle2.setPosition(randint(0, 150), 150)
 })
