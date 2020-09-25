@@ -1,4 +1,11 @@
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+namespace SpriteKind {
+    export const Snow = SpriteKind.create()
+    export const Tree = SpriteKind.create()
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Snow, function (sprite, otherSprite) {
+    obstacle2.destroy(effects.disintegrate, 200)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Tree, function (sprite, otherSprite) {
     obstacle.destroy(effects.disintegrate, 200)
 })
 let obstacle: Sprite = null
@@ -163,7 +170,7 @@ game.onUpdateInterval(5000, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
+        `, SpriteKind.Snow)
     obstacle2.setVelocity(0, -42)
     obstacle2.setPosition(randint(0, 150), 150)
 })
@@ -210,7 +217,7 @@ game.onUpdateInterval(2000, function () {
         ...............feefce...............
         ...............fceeec...............
         ...............ffceec...............
-        `, SpriteKind.Enemy)
+        `, SpriteKind.Tree)
     obstacle.setVelocity(0, -42)
     obstacle.setPosition(randint(0, 150), 150)
 })
