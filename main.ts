@@ -10,11 +10,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     } else if (otherSprite == obstacle2) {
         otherSprite.destroy(effects.disintegrate, 200)
         info.changeLifeBy(-1)
-    } else if (otherSprite == obstacle3) {
+    } else {
         otherSprite.destroy(effects.disintegrate, 200)
         info.changeLifeBy(-1)
-    } else {
-    	
     }
     scene.cameraShake(4, 200)
 })
