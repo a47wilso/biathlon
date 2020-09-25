@@ -171,10 +171,10 @@ game.onUpdateInterval(5000, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Snow)
-    obstacle2.setVelocity(0, -42)
+    obstacle2.setVelocity(0, -80)
     obstacle2.setPosition(randint(0, 150), 150)
 })
-game.onUpdateInterval(2000, function () {
+game.onUpdateInterval(3000, function () {
     obstacle = sprites.create(img`
         ................86..................
         ...........6688867886...............
