@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Snow = SpriteKind.create()
     export const Tree = SpriteKind.create()
     export const goose = SpriteKind.create()
+    export const target = SpriteKind.create()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     arrow = sprites.createProjectileFromSprite(img`
@@ -42,6 +43,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
     scene.cameraShake(4, 200)
 })
+let target: Sprite = null
 let obstacle3: Sprite = null
 let obstacle2: Sprite = null
 let obstacle: Sprite = null
@@ -269,6 +271,28 @@ game.onUpdateInterval(30000, function () {
 })
 game.onUpdateInterval(500, function () {
     info.changeScoreBy(1)
+})
+game.onUpdateInterval(3000, function () {
+    target = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . f 2 2 2 2 f . . . . . 
+        . . . . f 2 2 4 4 2 2 f . . . . 
+        . . . . f 2 4 5 5 4 2 f . . . . 
+        . . . . f 2 4 5 5 4 2 f . . . . 
+        . . . . f 2 2 4 4 2 2 f . . . . 
+        . . . . . f 2 2 2 2 f . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.target)
+    target.setVelocity(0, -42)
+    target.setPosition(randint(0, 150), 150)
 })
 game.onUpdateInterval(3000, function () {
     obstacle2 = sprites.create(img`
